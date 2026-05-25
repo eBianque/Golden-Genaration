@@ -1,0 +1,174 @@
+[
+{
+    "id": "ravi",
+    "nome": "Ravi Moncada",
+
+    "atributos": {
+      "potencia": 4,
+      "tecnica": 2,
+      "velocidade": 3,
+      "agilidade": 1,
+      "ego": 3
+    },
+
+    "folego": {
+      "total": 30,
+      "atual": 30    
+    },
+
+    "pericias": {
+
+      "cabeceio": 5,
+      "chute": 7,
+      "corpo_a_corpo": 5,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 4,
+      "pontaria": 3,
+      "roubo_de_bola": 3,
+      "tatica": 0,
+
+      "corrida": 6,
+      "explosao": 6,
+
+      "acrobacias": 1,
+      "defesa": 0,
+      "furtividade": 0,
+      "reflexos": 2,
+
+      "diplomacia": 3,
+      "enganacao": 0,
+      "intimidacao": 5,
+      "intuicao": 4,
+      "presenca": 2
+    },
+    "habilidades": [ 
+      {
+      "Powershot": {
+        "descricao": "O jogador tem um chute de primeira categoria, aumentando seu alcance em +5m e recebendo +1 em chute para cada 5 metros de distância do gol",
+        "custo": 7
+      },
+       "chute forçado": {
+        "descricao": "Quando forçar uma ação não recebe a penalidade e ganha +5 para realizar a ação (mas ainda gasta o fôlego a mais)",
+        "custo": 9
+      }
+    } ]
+  },
+
+{
+    "id": "matteo",
+    "nome": "Matteo Torres",
+
+    "atributos": {
+      "potencia": 1,
+      "tecnica": 2,
+      "velocidade": 3,
+      "agilidade": 4,
+      "ego": 3
+    },
+    "folego": {
+      "total": 28,
+      "atual": 28
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 1,
+      "corpo_a_corpo": 2,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 6,
+      "pontaria": 1,
+      "roubo_de_bola": 0,
+      "tatica": 1,
+
+      "corrida": 1,
+      "explosao": 5,
+
+      "acrobacias": 2,
+      "defesa": 6,
+      "furtividade": 5,
+      "reflexos": 7,
+
+      "diplomacia": 2,
+      "enganacao": 0,
+      "intimidacao": 0,
+      "intuicao": 4,
+      "presenca": 2
+    },
+    "habilidades": [
+      {
+      "defesa surpresa": {
+        "descricao": "Como um goleiro veloz, sua defesa é imprevisível, caso seja um duelo com o atacante, ou seja, sem ninguém na frente do atacante ou do goleiro, recebe +4 para realizar essa defesa",
+        "custo": 5
+      },
+       "velocidade na preparação": {
+        "descricao": "Sua velocidade de pensamento e reação é insana, realiza um teste de explosão (dt20) para ter vantagem na defesa, ganhando +3 caso passe",
+        "custo": 3
+      }
+    } ]
+  },
+
+{
+    "id": "gael",
+    "nome": "Gael Marques",
+
+    "atributos": {
+      "potencia": 3,
+      "tecnica": 4,
+      "velocidade": 3,
+      "agilidade": 2,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 29,
+      "atual": 29
+    },
+
+    "pericias": {
+
+      "cabeceio": 2,
+      "chute": 6,
+      "corpo_a_corpo": 5,
+
+      "dominio": 0,
+      "drible": 1,
+      "passe": 7,
+      "pontaria": 1,
+      "roubo_de_bola": 4,
+      "tatica": 0,
+
+      "corrida": 1,
+      "explosao": 5,
+
+      "acrobacias": 0,
+      "defesa": 0,
+      "furtividade": 0,
+      "reflexos": 4,
+
+      "diplomacia": 3,
+      "enganacao": 5,
+      "intimidacao": 0,
+      "intuicao": 0,
+      "presenca": 2
+    },
+    "habilidades": [
+      {
+        "passe no sufoco": {
+          "descricao": "O usuário adora estar em desvantagem, caso esteja flanqueado ou cercado, anula a condição e ganha +3 para um próximo passe.",
+          "custo": 8
+        }
+      },
+      {
+        "passe ousado": {
+          "descricao": "O jogador gosta de forçar passes, caso precise rolar o passe contra algum alvo, todos que tentaram impedir ganham +2 para reagir, porém caso não consigam pegar, quem receber o passe tem +5 na próxima ação após receber.",
+          "custo": 5
+        }
+      }
+    ]
+  }
+]
