@@ -17,6 +17,7 @@ type Habilidade = {
 type Jogador = {
   id: string;
   nome: string;
+  numeroCamisa?: string;
   atributos: Record<string, number>;
   pericias: Record<string, number>;
   habilidades: Record<string, Habilidade>;
@@ -124,13 +125,13 @@ function criarPosicoesIniciais(jogadores: Jogador[]): Record<string, PosicaoCamp
   jogadores.forEach((jogador, indice) => {
     // Aqui decidimos que os primeiros 11 jogadores começam em campo.
     // Isso pode ser ajustado depois de acordo com sua regra de jogo.
-    const estaEmCampo = indice < 11;
+    const estaEmCampo = false;
 
     // Se estiver em campo, posiciona em uma grade inicial simples.
     // Se não estiver, ele começa no banco.
     posicoes[jogador.id] = {
       x: estaEmCampo ? 20 + (indice % 4) * 18 : 50,
-      y: estaEmCampo ? 20 + Math.floor(indice / 4) * 18 : 92,
+      y: estaEmCampo ? 20 + Math.floor(indice / 4) * 18 : 50,
       onField: estaEmCampo,
     };
   });
@@ -158,11 +159,19 @@ function formatarChave(chave: string) {
     .replace(/\b\w/g, (letra) => letra.toUpperCase());
 }
 
+function calcularDistanciaPercorrida(jogador: Jogador) {
+  const velocidade = Number(jogador.atributos.velocidade ?? 0);
+
+  return velocidade * 5;
+}
+
 export default function MestragemPage() {
   // Guarda o estado das posições de todos os jogadores.
   const [posicoes, setPosicoes] = useState<Record<string, PosicaoCampo>>(() =>
     criarPosicoesIniciais(todosJogadores)
   );
+
+  const [jogadores, setJogadores] = useState<Jogador[]>(todosJogadores);
 
   // Guarda se o campo está travado ou destravado.
   const [travado, setTravado] = useState(true);
@@ -172,6 +181,18 @@ export default function MestragemPage() {
 
   // Guarda o jogador selecionado para abrir a ficha completa na lateral direita.
   const [jogadorSelecionadoId, setJogadorSelecionadoId] = useState<string | null>(null);
+
+  const [modalCriarJogador, setModalCriarJogador] = useState(false);
+
+  const [novoNome, setNovoNome] = useState("");
+const [novoNumero, setNovoNumero] = useState("");
+
+const [modeloBaseId, setModeloBaseId] = useState("");
+
+const [copiarAtributos, setCopiarAtributos] = useState(true);
+const [copiarPericias, setCopiarPericias] = useState(true);
+const [copiarHabilidades, setCopiarHabilidades] = useState(true);
+const [copiarFolego, setCopiarFolego] = useState(true);
 
   // Guarda o jogador que está sob o mouse para mostrar um resumo rápido ao lado da camisa.
   const [jogadorHoverId, setJogadorHoverId] = useState<string | null>(null);
@@ -184,7 +205,7 @@ export default function MestragemPage() {
 
   // Lista derivada: o jogador selecionado, usada no painel direito.
   const jogadorSelecionado = useMemo(
-    () => todosJogadores.find((jogador) => jogador.id === jogadorSelecionadoId) ?? null,
+  () => jogadores.find((jogador) => jogador.id === jogadorSelecionadoId) ?? null,
     [jogadorSelecionadoId]
   );
 
@@ -197,7 +218,7 @@ export default function MestragemPage() {
 
       // Aqui usamos a ordem original do JSON para preencher os slots.
       // Depois você pode trocar isso por um sistema de escalação manual.
-      todosJogadores.forEach((jogador, indice) => {
+      jogadores.forEach((jogador, indice) => {
         const slot = slots[indice];
 
         if (slot) {
@@ -306,6 +327,64 @@ export default function MestragemPage() {
     };
   }, [arrastandoId, travado]);
 
+  function criarJogador() {
+  const modelo = jogadores.find(
+    (jogador) => jogador.id === modeloBaseId
+  );
+
+  const novoJogador: Jogador = {
+    id: crypto.randomUUID(),
+
+    nome: novoNome,
+
+    numeroCamisa: novoNumero,
+
+    atributos:
+      copiarAtributos && modelo
+        ? structuredClone(modelo.atributos)
+        : {},
+
+    pericias:
+      copiarPericias && modelo
+        ? structuredClone(modelo.pericias)
+        : {},
+
+    habilidades:
+      copiarHabilidades && modelo
+        ? structuredClone(modelo.habilidades)
+        : {},
+
+    folego:
+      copiarFolego && modelo
+        ? structuredClone(modelo.folego)
+        : {
+            total: 20,
+            atual: 20,
+          },
+  };
+
+  setJogadores((estadoAtual) => [
+    ...estadoAtual,
+    novoJogador,
+  ]);
+
+  setPosicoes((estadoAtual) => ({
+    ...estadoAtual,
+
+    [novoJogador.id]: {
+      x: 50,
+      y: 92,
+      onField: false,
+    },
+  }));
+
+  setNovoNome("");
+  setNovoNumero("");
+  setModeloBaseId("");
+
+  setModalCriarJogador(false);
+}
+
   return (
     <main className="min-h-screen bg-[#06141B] text-white flex flex-col">
       {/* CABEÇALHO DA PÁGINA */}
@@ -398,19 +477,21 @@ export default function MestragemPage() {
             </div>
 
             {/* Renderiza apenas os jogadores que estão em campo */}
-            {todosJogadores
+            {jogadores
               .filter((jogador) => posicoes[jogador.id]?.onField)
               .map((jogador) => {
                 const posicao = posicoes[jogador.id];
-                const melhorPericia = pegarMelhorPericia(jogador);
+                const distanciaPercorrida = calcularDistanciaPercorrida(jogador);
                 const estaHover = jogadorHoverId === jogador.id;
                 const estaSelecionado = jogadorSelecionadoId === jogador.id;
 
                 return (
                   <div
-                    key={jogador.id}
-                    className="absolute -translate-x-1/2 -translate-y-1/2"
-                    style={{ left: `${posicao.x}%`, top: `${posicao.y}%` }}
+                  key={jogador.id}
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 ${
+                  estaHover ? "z-50" : "z-10"
+                   }`}
+                  style={{ left: `${posicao.x}%`, top: `${posicao.y}%` }}
                   >
                     {/* Camisa do jogador */}
                     <button
@@ -449,8 +530,7 @@ export default function MestragemPage() {
                           Fôlego: {jogador.folego.atual} / {jogador.folego.total}
                         </p>
 
-                        <p className="text-sm text-white/75">
-                          Melhor perícia: {melhorPericia ? `${formatarChave(melhorPericia[0])} (${melhorPericia[1]})` : "Sem perícias"}
+                        <p className="text-sm text-white/75">Distância percorrida: {distanciaPercorrida}m
                         </p>
 
                         <p className="text-sm text-white/75">
@@ -649,6 +729,15 @@ export default function MestragemPage() {
         </aside>
       </section>
 
+  <div className="px-6 pb-4 flex justify-center">
+    <button
+      onClick={() => setModalCriarJogador(true)}
+      className="bg-[#F6C453] text-black px-6 py-3 rounded-xl font-bold hover:scale-105 transition"
+     >
+      + Criar Jogador
+    </button>
+  </div>
+
       {/* LISTA HORIZONTAL INFERIOR COM TODOS OS JOGADORES */}
       <footer className="border-t border-white/10 bg-[#0B202B] p-4">
         <div className="flex items-center justify-between gap-4 mb-3">
@@ -663,7 +752,7 @@ export default function MestragemPage() {
 
         {/* A lista é horizontal e com scroll, para caberem muitos jogadores sem quebrar a tela. */}
         <div className="flex gap-3 overflow-x-auto pb-2">
-          {todosJogadores.map((jogador) => {
+          {jogadores.map((jogador) => {
             const estaAtivo = posicoes[jogador.id]?.onField;
             const melhorPericia = pegarMelhorPericia(jogador);
 
@@ -715,6 +804,112 @@ export default function MestragemPage() {
           })}
         </div>
       </footer>
+
+      {modalCriarJogador && (
+          <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999]">
+    <div className="bg-[#11212D] rounded-2xl p-6 w-[500px] max-w-[90vw] flex flex-col gap-4">
+
+      <h2 className="text-2xl font-bold text-[#F6C453]">
+        Criar Jogador
+      </h2>
+
+      <input
+        value={novoNome}
+        onChange={(e) => setNovoNome(e.target.value)}
+        placeholder="Nome"
+        className="bg-[#253745] rounded-lg p-3"
+      />
+
+      <input
+        value={novoNumero}
+        onChange={(e) => setNovoNumero(e.target.value)}
+        placeholder="Número da camisa"
+        className="bg-[#253745] rounded-lg p-3"
+      />
+
+      <select
+        value={modeloBaseId}
+        onChange={(e) => setModeloBaseId(e.target.value)}
+        className="bg-[#253745] rounded-lg p-3"
+      >
+        <option value="">
+          Sem modelo
+        </option>
+
+        {jogadores.map((jogador) => (
+          <option
+            key={jogador.id}
+            value={jogador.id}
+          >
+            {jogador.nome}
+          </option>
+        ))}
+      </select>
+
+      <label className="flex gap-2">
+        <input
+          type="checkbox"
+          checked={copiarAtributos}
+          onChange={(e) =>
+            setCopiarAtributos(e.target.checked)
+          }
+        />
+        Copiar atributos
+      </label>
+
+      <label className="flex gap-2">
+        <input
+          type="checkbox"
+          checked={copiarPericias}
+          onChange={(e) =>
+            setCopiarPericias(e.target.checked)
+          }
+        />
+        Copiar perícias
+      </label>
+
+      <label className="flex gap-2">
+        <input
+          type="checkbox"
+          checked={copiarHabilidades}
+          onChange={(e) =>
+            setCopiarHabilidades(e.target.checked)
+          }
+        />
+        Copiar habilidades
+      </label>
+
+      <label className="flex gap-2">
+        <input
+          type="checkbox"
+          checked={copiarFolego}
+          onChange={(e) =>
+            setCopiarFolego(e.target.checked)
+          }
+        />
+        Copiar fôlego
+      </label>
+
+      <div className="flex gap-3">
+        <button
+          onClick={criarJogador}
+          className="flex-1 bg-green-600 rounded-lg py-3 font-bold"
+        >
+          Criar
+        </button>
+
+        <button
+          onClick={() => setModalCriarJogador(false)}
+          className="flex-1 bg-red-600 rounded-lg py-3 font-bold"
+        >
+          Cancelar
+        </button>
+      </div>
+
+    </div>
+  </div>
+    )}
+
     </main>
   );
 }

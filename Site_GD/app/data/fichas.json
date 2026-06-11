@@ -45,7 +45,7 @@
     },
     "habilidades": [ 
       {
-      "Powershot": {
+      "powershot": {
         "descricao": "O jogador tem um chute de primeira categoria, aumentando seu alcance em +5m e recebendo +1 em chute para cada 5 metros de distância do gol",
         "custo": 7
       },
@@ -170,5 +170,459 @@
         }
       }
     ]
-  }
+  },
+
+    {
+    "id": "vicente",
+    "nome": "Vicente Vieira",
+
+    "atributos": {
+      "potencia": 3,
+      "tecnica": 2,
+      "velocidade": 2,
+      "agilidade": 4,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 29,
+      "atual": 29    
+    },
+
+    "pericias": {
+
+      "cabeceio": 5,
+      "chute": 5,
+      "corpo_a_corpo": 5,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 1,
+      "pontaria": 0,
+      "roubo_de_bola": 6,
+      "tatica": 0,
+
+      "corrida": 5,
+      "explosao": 5,
+
+      "acrobacias": 2,
+      "defesa": 6,
+      "furtividade": 0,
+      "reflexos": 5,
+
+      "diplomacia": 0,
+      "enganacao": 0,
+      "intimidacao": 4,
+      "intuicao": 2,
+      "presenca": 0
+    },
+    "habilidades": [ 
+      {
+      "marcação dupla": {
+        "descricao": "Como um zagueiro obsessivo, estando posicionado entre dois jogadores do time inimigo que estejam relativamente perto, consegue marcar ambos ao mesmo tempo, faz um teste de explosão para chegar em um dos dois como reação, caso falhe chega para marcar, caso passe chega antes e fica com a posse da bola",
+        "custo": 5
+      },
+       "presença esmagadora": {
+        "descricao": "Sua presença vale por dois, caso esteja marcando um inimigo individualmente, o alvo recebe o status de flanqueado, caso mais uma pessoa chegue para marcar, o alvo recebe o status de cercado",
+        "custo": 5
+      }
+    } ]
+  },
+
+    {
+    "id": "joão lucas",
+    "nome": "João Lucas Ferreira",
+
+    "atributos": {
+      "potencia": 3,
+      "tecnica": 1,
+      "velocidade": 2,
+      "agilidade": 3,
+      "ego": 3
+    },
+
+    "folego": {
+      "total": 36,
+      "atual": 36    
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 6,
+      "corpo_a_corpo": 4,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 4,
+      "pontaria": 1,
+      "roubo_de_bola": 0,
+      "tatica": 0,
+
+      "corrida": 3,
+      "explosao": 5,
+
+      "acrobacias": 5,
+      "defesa": 2,
+      "furtividade": 3,
+      "reflexos": 5,
+
+      "diplomacia": 3,
+      "enganacao": 0,
+      "intimidacao": 4,
+      "intuicao": 2,
+      "presenca": 3
+    },
+    "habilidades": [ 
+      {
+      "chute aéreo": {
+        "descricao": "Mostrando ao que veio, o jogador se especializou em chutes diretos de várias formas, ao usar acrobacia para realizar um chute aumenta a dt para 20 porém caso passe recebe +3 para o chute",
+        "custo": 4
+      },
+       "presença forte": {
+        "descricao": "Você não é apenas mais uma preocupação, caso esteja a 10 metros ou menos de um companheiro com a bola, o jogador com a bola recebe +3 para realizar sua ação",
+        "custo": 4
+      }
+    } ]
+  },
+
+    {
+    "id": "eduardo",
+    "nome": "Eduardo Monteiro",
+
+    "atributos": {
+      "potencia": 3,
+      "tecnica": 3,
+      "velocidade": 3,
+      "agilidade": 1,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 36,
+      "atual": 36    
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 5,
+      "corpo_a_corpo": 1,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 7,
+      "pontaria": 2,
+      "roubo_de_bola": 3,
+      "tatica": 0,
+
+      "corrida": 6,
+      "explosao": 6,
+
+      "acrobacias": 0,
+      "defesa": 0,
+      "furtividade": 0,
+      "reflexos": 4,
+
+      "diplomacia": 2,
+      "enganacao": 0,
+      "intimidacao": 3,
+      "intuicao": 1,
+      "presenca": 4
+    },
+    "habilidades": [ 
+      {
+      "passe fácil": {
+        "descricao": "Um passe fácil para o receptor realizar sua próxima ação. Quem receber recebe +3 em sua próxima ação",
+        "custo": 4
+      },
+       "se livrando da bola": {
+        "descricao": "Caso esteja com a bola, recebe +2 para passar como reação",
+        "custo": 2
+      }
+    } ]
+  },
+
+      {
+    "id": "gustavo",
+    "nome": "Gustavo Fernandes",
+
+    "atributos": {
+      "potencia": 3,
+      "tecnica": 2,
+      "velocidade": 2,
+      "agilidade": 2,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 28,
+      "atual": 28    
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 6,
+      "corpo_a_corpo": 1,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 2,
+      "pontaria": 5,
+      "roubo_de_bola": 0,
+      "tatica": 0,
+
+      "corrida": 2,
+      "explosao": 2,
+
+      "acrobacias": 4,
+      "defesa": 0,
+      "furtividade": 0,
+      "reflexos": 0,
+
+      "diplomacia": 0,
+      "enganacao": 0,
+      "intimidacao": 5,
+      "intuicao": 0,
+      "presenca": 3
+    },
+    "habilidades": [ 
+      {
+      "chute carregado": {
+        "descricao": "Um chute forte e preciso quando carregado, o bônus da perícia pontaria é dobrado",
+        "custo": 3
+      },
+       "mira rápida": {
+        "descricao": "Pode utilizar a perícia de pontaria em um chute acrobático",
+        "custo": 4
+      }
+    } ]
+  },
+
+        {
+    "id": "rafael",
+    "nome": "Rafael Matta",
+
+    "atributos": {
+      "potencia": 1,
+      "tecnica": 3,
+      "velocidade": 2,
+      "agilidade": 1,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 33,
+      "atual": 33    
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 0,
+      "corpo_a_corpo": 2,
+
+      "dominio": 4,
+      "drible": 4,
+      "passe": 5,
+      "pontaria": 0,
+      "roubo_de_bola": 0,
+      "tatica": 3,
+
+      "corrida": 4,
+      "explosao": 0,
+
+      "acrobacias": 0,
+      "defesa": 0,
+      "furtividade": 2,
+      "reflexos": 0,
+
+      "diplomacia": 0,
+      "enganacao": 5,
+      "intimidacao": 0,
+      "intuicao": 0,
+      "presenca": 3
+    },
+    "habilidades": [ 
+      {
+      "devolução rápida": {
+        "descricao": "Sabendo os fundamentos do domínio muito bem, consegue impedir um passe na hora certa. Pode usar a perícia de domínio no lugar de reflexo ou roubo de bola",
+        "custo": 5
+      },
+       "domínio estendido": {
+        "descricao": "Pode realizar mais uma ação com o bônus do domínio",
+        "custo": 4
+      }
+    } ]
+  },
+
+        {
+    "id": "pedro",
+    "nome": "Pedro Lima",
+
+    "atributos": {
+      "potencia": 2,
+      "tecnica": 3,
+      "velocidade": 1,
+      "agilidade": 2,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 27,
+      "atual": 27    
+    },
+
+    "pericias": {
+
+      "cabeceio": 2,
+      "chute": 0,
+      "corpo_a_corpo": 4,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 3,
+      "pontaria": 0,
+      "roubo_de_bola": 5,
+      "tatica": 0,
+
+      "corrida": 4,
+      "explosao": 0,
+
+      "acrobacias": 3,
+      "defesa": 4,
+      "furtividade": 0,
+      "reflexos": 4,
+
+      "diplomacia": 2,
+      "enganacao": 0,
+      "intimidacao": 2,
+      "intuicao": 0,
+      "presenca": 4
+    },
+    "habilidades": [ 
+      {
+      "passe longo": {
+        "descricao": "Como um especialista em passes de longa distância, recebe +3 e aumenta em 5 metros a distância de seu lançamento sem penalidade",
+        "custo": 5
+      },
+       "tirando com estilo": {
+        "descricao": "Caso um passe venha na direção da pessoa que o jogador está marcando, pode realizar um teste de acrobacia para melhorar o reflexo, porém caso passe deve realizar um passe direto para algum companheiro no raio de ação de um chute",
+        "custo": 4
+      }
+    } ]
+  },
+      {
+    "id": "felipe",
+    "nome": "Felipe Oliveira",
+
+    "atributos": {
+      "potencia": 1,
+      "tecnica": 3,
+      "velocidade": 2,
+      "agilidade": 2,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 30,
+      "atual": 30    
+    },
+
+    "pericias": {
+
+      "cabeceio": 0,
+      "chute": 5,
+      "corpo_a_corpo": 0,
+
+      "dominio": 0,
+      "drible": 5,
+      "passe": 6,
+      "pontaria": 2,
+      "roubo_de_bola": 5,
+      "tatica": 0,
+
+      "corrida": 5,
+      "explosao": 5,
+
+      "acrobacias": 4,
+      "defesa": 0,
+      "furtividade": 0,
+      "reflexos": 2,
+
+      "diplomacia": 0,
+      "enganacao": 4,
+      "intimidacao": 0,
+      "intuicao": 0,
+      "presenca": 0
+    },
+    "habilidades": [ 
+      {
+      "passe leve": {
+        "descricao": "O jogador passa a bola de forma sutil. Quem receber o passe ganha +2 na próxima ação",
+        "custo": 3
+      },
+       "passe crucial": {
+        "descricao": "Um passe concentrado no momento crítico. Recebe +3 em passe",
+        "custo": 5
+      }
+    } ]
+  },
+     {
+    "id": "hugo",
+    "nome": "Hugo",
+
+    "atributos": {
+      "potencia": 2,
+      "tecnica": 3,
+      "velocidade": 2,
+      "agilidade": 3,
+      "ego": 2
+    },
+
+    "folego": {
+      "total": 33,
+      "atual": 33    
+    },
+
+    "pericias": {
+
+      "cabeceio": 2,
+      "chute": 4,
+      "corpo_a_corpo": 4,
+
+      "dominio": 0,
+      "drible": 0,
+      "passe": 4,
+      "pontaria": 2,
+      "roubo_de_bola": 4,
+      "tatica": 2,
+
+      "corrida": 3,
+      "explosao": 5,
+
+      "acrobacias": 0,
+      "defesa": 3,
+      "furtividade": 0,
+      "reflexos": 3,
+
+      "diplomacia": 3,
+      "enganacao": 0,
+      "intimidacao": 0,
+      "intuicao": 0,
+      "presenca": 1
+    },
+    "habilidades": [ 
+      {
+      "volta de reajuste": {
+        "descricao": "Como um bom meia defensivo, consegue se realocar para defender de alguma forma. Pode se mover 5m como ação livre na vez do oponente para ficar dentro da área de ação e tentar impedir uma ação dele (só pode ser usado uma vez por rodada e para responder uma ação)",
+        "custo": 4
+      },
+       "sem espaço": {
+        "descricao": "Como um especialista em defesa, consegue limitar o ângulo de drible. Pode fechar o ângulo para usar roubo de bola",
+        "custo": 2
+      }
+    } ]
+    }
 ]
