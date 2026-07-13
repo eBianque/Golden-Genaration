@@ -34,7 +34,7 @@ export default function Home() {
         </Link>
 
         <Link
-          href="/gm-page"
+          href="/gm-page2"
           className="bg-yellow-500 text-blue-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-100 transition text-center hover:bg-yellow-100 hover:scale-105 transition"
         >
           Escudo do Mestre
